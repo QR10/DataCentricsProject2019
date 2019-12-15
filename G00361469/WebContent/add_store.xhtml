@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+  
+  <h:head>
+    <title>Add Store</title>
+  </h:head>
+  <h:outputStylesheet library="css" name="styles.css"/>
+  
+  <h:body>
+  	<h:messages globalOnly="true" styleClass="error"/>
+    <h2>Add Store</h2>
+    <h:form>
+      Store Name: <h:inputText id="name" value="#{store.name}" required="true" requiredMessage="Name is mandatory" /><br/><br/>
+      <h:message for="name" styleClass="error"/>
+      <br/><br/>
+      Founded:    
+      <h:outputText value="&#160;"/>
+      <h:outputText value="&#160;" />
+      <h:outputText value="&#160;" />
+      <h:outputText value="&#160;" />
+      <h:outputText value="&#160;" />
+      <h:inputText id="founded" value="#{store.founded}" required="true" requiredMessage="Founded is mandatory"/><br/><br/>
+      <h:message for="founded" styleClass="error"/>
+      <br/><br/>
+      <h:commandButton value="Add" action="#{shopController.addStore(store)}"/>
+   </h:form>
+   <br/>
+   <h:form>
+  		<h:commandLink value="Home" action="#{shopController.moveToHomePage()}"/> 
+  		<h:outputText value="&#160;" />
+  		<h:commandLink value="Stores" action="list_stores"/> 
+	</h:form>
+  </h:body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:f="http://xmlns.jcp.org/jsf/core">
+  
+  <h:head>
+    <title>Manage Products</title>
+  </h:head>
+  
+  <f:metadata>
+  <f:event type="preRenderView" 
+      listener="#{shopController.loadProducts()}"/>
+  </f:metadata>
+  <h:outputStylesheet library="css" name="tables.css"/>
+  <h:outputStylesheet library="css" name="styles.css"/>
+  
+  <h:body>
+  	<h:messages globalOnly="true" styleClass="error"/>
+  	<h:dataTable value="#{shopController.products}" var="product"
+		headerClass="table-header"
+		rowClasses="table-odd-row,table-even-row">
+		<h:column>
+	 	  <f:facet name="header">Store ID</f:facet>
+	 	  #{product.sid}
+		</h:column>
+		<h:column>
+	 	  <f:facet name="header">Product ID</f:facet>
+	 	  #{product.pid}
+		</h:column>
+		<h:column>
+	 	  <f:facet name="header">Name</f:facet>
+	 	  #{product.prodName}
+		</h:column>
+		<h:column>
+	 	  <f:facet name="header">Price</f:facet>
+	 	  #{product.price}
+		</h:column>
+		<h:column>
+	 	  <f:facet name="header">Action</f:facet>
+	 	  <h:form>
+	 	  	<h:commandLink value="Delete" action="#{shopController.deleteProduct(product.pid)}"/>
+	 	  </h:form>
+		</h:column>
+	</h:dataTable>
+	<br/>
+	<h:form>
+  		<h:commandLink value="Home" action="#{shopController.moveToHomePage()}"/>  
+	</h:form>
+  </h:body>
+</html>
